@@ -1,0 +1,117 @@
+body {
+    margin: 0px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    display: flex;
+    /* justify-content: space-between; */
+    background-color: #66CDAA;
+}
+
+
+#logo {
+    width: 100px;
+    height: 100px;
+}
+
+.special {
+    width: 325px;
+    margin-left: 40px;
+}
+
+.special ul {
+    font-weight: bold;
+    width: 275px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 25px;
+}
+
+.special li {
+    font-size: 17px;
+    font-variant: small-caps;
+    list-style-type: none;
+}
+
+.cats {
+    display: flex;
+    justify-content: flex-end;
+    width: 250px;
+}
+
+.cats select {
+    font-size: 15px;
+    height: 42px;
+    width: 200px;
+    position: relative;
+    top: 30px;
+}
+
+option {
+    box-sizing: border-box;
+}
+
+.midBarre {
+    display: flex;
+    justify-content: flex-start;
+    width: 775px;
+}
+
+#barreRecherche {
+    font-size: 20px;
+    width: 650px;
+    height: 40px;
+    position: relative;
+    top: 30px;
+    padding: 0px;
+}
+
+
+#loupe {
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 30px;
+}
+
+.pan {
+    width: 75px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 75px;
+}
+
+#panier {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 20px;
+}
+
+.rigthBar {
+    width: 275px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signLog {
+    font-size: 20px;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: black;
+    position: relative;
+    top: 35px;
+}
+
+.zone {
+    background-color: #98FB98;
+}
