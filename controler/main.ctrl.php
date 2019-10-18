@@ -28,21 +28,34 @@ $vue->assign('articles', $articles); // Donne articles à la vue
 $firstRef = $articles[0]->getRef();
 $lastRef = end($articles)->getRef();
 
-// Calcule la référence qui suit le dernier article
-$nextRef = $dao->next($lastRef);
-// Si c'est la fin: reste sur le même article
-if ($nextRef == -1) {
-  $nextRef = $firstRef;
+if (isset($_GET['categorie'])) {
+  // Calcule la référence qui suit le dernier article
+  $nextRef = $dao->next($lastRef);
+  // Si c'est la fin: reste sur le même article
+  if ($nextRef == -1) {
+    $nextRef = $firstRef;
+  }
+  // Calcule la référence qui précède de 12 l'article courant
+  $prevRef = $dao->prevN($firstRef,12);
+  // Si c'est la fin: reste sur le même article
+  if ($prevRef == -1) {
+    $prevRef = $firstRef;
+  }
+} else { //Sinon on doit recuperer la ref de l'article mis en vedette suivant et précedent de 12
+  $nextRef = $dao->nextPlusCommande($lastRef);
+  // Si c'est la fin: reste sur le même article
+  if ($nextRef == -1) {
+    $nextRef = $firstRef;
+  }
+  // Calcule la référence qui précède de 12 l'article courant
+  $prevRef = $dao->prevNPlusCommande($firstRef,12);
+  // Si c'est la fin: reste sur le même article
+  if ($prevRef == -1) {
+    $prevRef = $firstRef;
+  }
 }
 // Passe le résultat à la vue
 $view->assign('nextRef',$nextRef);
-
-// Calcule la référence qui précède de 12 l'article courant
-$prevRef = $dao->prevN($firstRef,12);
-// Si c'est la fin: reste sur le même article
-if ($prevRef == -1) {
-  $prevRef = $firstRef;
-}
 // Passe le résultat à la vue
 $view->assign('prevRef',$prevRef);
 
