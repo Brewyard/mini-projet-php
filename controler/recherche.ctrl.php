@@ -31,6 +31,7 @@ if (isset($_GET['recherche'])) { // normalement c'est tout le temps vrai
   $vue->assign('articleNext', $nextRef); // Donne articles à la vue
   $vue->assign('articlePrev', $prevRef); // Donne articles à la vue
 }
+//Pas forcement d'articles trouvés
 
 $view->display("../view/recherche.view.php");
 

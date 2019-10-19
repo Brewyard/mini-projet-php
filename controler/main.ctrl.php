@@ -13,6 +13,9 @@ include_once("../framework/view.class.php");
 // Inclusion du modèle
 include_once("../model/DAO.class.php");
 
+session_start(); // Demarre la session pour enregistrer les articles du panier du client
+//Mais on peut enregistrer tout ce qu'on veut d'autres
+
 $vue = new View();
 $dao = new DAO();
 $vue->assign('categorie', 0);
