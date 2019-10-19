@@ -1,11 +1,12 @@
-//Le controleur main a besoin :
-  - Toutes les catégories et sous catégories
-  - Les articles mis en vedette sur la page principale (si aucun choix)
-  - Ou alors les articles et la categorie choisis
-  - la reference du premier article à afficher
-  - Si le client est connecté ou non (plus tard) et peut etre son login aussi pour pouvoir l'afficher en haut à droite
-  - le nombre de choses dans le panier (plus tard) pour l'afficher en haut à droite
+
 <?php
+//Le controleur main a besoin :
+//  - Toutes les catégories et sous catégories
+//  - Les articles mis en vedette sur la page principale (si aucun choix)
+//  - Ou alors les articles et la categorie choisis
+//  - la reference du premier article à afficher
+//  - Si le client est connecté ou non (plus tard) et peut etre son login aussi pour pouvoir l'afficher en haut à droite
+//  - le nombre de choses dans le panier (plus tard) pour l'afficher en haut à droite
 // Inclusion du framework
 include_once("../framework/view.class.php");
 
@@ -59,5 +60,6 @@ $view->assign('nextRef',$nextRef);
 // Passe le résultat à la vue
 $view->assign('prevRef',$prevRef);
 
+$view->display("../view/main.view.php");
 
 ?>
