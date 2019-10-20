@@ -1,7 +1,8 @@
 body {
     margin: 0px;
     color: black;
-    background-color: PowderBlue;
+    /* background-color: LightCyan; */
+    background-color: White;
 }
 
 a {
@@ -10,6 +11,8 @@ a {
 }
 
 header {
+    position: fixed;
+    top: 0px;
     display: flex;
     background-color: SteelBlue;
     /* background-color: #66CDAA; */
@@ -62,7 +65,7 @@ option {
 .midBarre {
     display: flex;
     justify-content: flex-start;
-    width: 775px;
+    width: 760px;
 }
 
 #barreRecherche {
@@ -88,7 +91,7 @@ option {
     width: 75px;
     display: flex;
     justify-content: space-around;
-    margin-right: 75px;
+    margin-right: 40px;
 }
 
 #panier {
@@ -98,11 +101,34 @@ option {
     top: 20px;
 }
 
-.rigthBar {
-    width: 275px;
+.rightBar {
+    width: 280px;
     margin-right: 30px;
+}
+
+.rightBar ul {
+    position: relative;
+    top: 35px;
     display: flex;
     justify-content: space-between;
+    padding: 0px;
+    margin : 0px;
+}
+
+.rightBar li {
+    list-style-type: none;
+    padding: 6px;
+}
+
+.rightBar li:last-child {
+    margin-left: 10px;
+    border: solid DarkSlateBlue 2px;
+    border-radius: 5px;
+    background-color: RoyalBlue;
+}
+
+.rightBar li:last-child a {
+    color: White;
 }
 
 .signLog {
@@ -110,11 +136,50 @@ option {
     font-weight: bold;
     font-variant: small-caps;
     color: black;
-    position: relative;
-    top: 35px;
+}
+
+.catLat {
+    position: fixed;
+    top: 130px;
+}
+
+.catLat nav {
+    width: 200px;
+}
+
+.catLat ul {
+    padding: 0px;
+    border: solid CornflowerBlue 2px;
+    /* border-top: none; */
+    border-radius: 0px 10px 10px 0px;
+    background-color: Snow;
+}
+
+.catLat li {
+    height: 50px;
+    list-style-type: none;
+    text-align: center;
+    border-top: solid CornflowerBlue 1px;
+    border-bottom: solid CornflowerBlue 1px;
+}
+
+.catLat li:first-child {
+    border-top: none;
+}
+
+.catLat li:last-child {
+    border-bottom: none;
 }
 
 .zone {
-    /* background-color: PowderBlue; */
+    height: 1300px;
+    margin-top: 103.5px;
+    margin-left: 275px;
+    margin-right: 30px;
+    background-color: PowderBlue;
     /* background-color: #98FB98; */
+}
+
+#banniere_noel {
+    width: 1598px;
 }
