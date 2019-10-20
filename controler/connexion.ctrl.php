@@ -8,9 +8,6 @@ include_once("../model/DAO.class.php");
 $vue = new View();
 $dao = new DAO();
 
-
-
-
-
+$vue->display('../view/connexion.view.php');
 
 ?>
