@@ -11,9 +11,9 @@ $dao = new DAO();
 $articlesDansPanier = 0;
 // utiliser le panier de la session si utilisateur pas connecté ou alors son panier de la BDD
 if (isset($_SESSION['email'])) { // si on a son email dans la session il est connecté
-  $articlesDansPanier = $dao->getPanierClient($_SESSION['email']);
+  $articlesDansPanier = $dao->getPanierClient($_SESSION['email']); // panier BDD
 } else {
-  $articlesDansPanier = $_SESSION['panier'];
+  $articlesDansPanier = $_SESSION['panier']; // panier session
 }
 
 $vue->assign('panier', $articlesDansPanier);
