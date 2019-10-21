@@ -8,7 +8,7 @@ CREATE TABLE Categorie
 
 CREATE TABLE Article
 (
-    ref char(8) PRIMARY KEY,
+    ref numeric(8) PRIMARY KEY,
     intitule varchar,
     infos varchar,
     prix numeric(4,2),

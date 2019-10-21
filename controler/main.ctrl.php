@@ -24,13 +24,13 @@ if (isset($_GET['categorie'])) {
   $articles = $dao->getArticlesFromCat($_GET['categorie']); // on recupere les articles de cette categories dans la BDD
 }
 else {
-  $articles = $dao->getArticlesPlusCommandes($_GET['categorie']); // On recupere articles les plus commandés
+  $articles = $dao->getArticlesPlusCommandes(12); // On recupere articles les plus commandés
 }
 $vue->assign('articles', $articles); // Donne articles à la vue
 
 // Note la référence du premier et dernier article affiché
-$firstRef = $articles[0]->getRef();
-$lastRef = end($articles)->getRef();
+$firstRef = $articles[0]->ref;
+$lastRef = end($articles)->ref;
 
 if (isset($_GET['categorie'])) {
   // Calcule la référence qui suit le dernier article
@@ -45,7 +45,7 @@ if (isset($_GET['categorie'])) {
   if ($prevRef == -1) {
     $prevRef = $firstRef;
   }
-} else { //Sinon on doit recuperer la ref de l'article mis en vedette suivant et précedent de 12
+} else { //Sinon on doit recuperer la ref de l'article mis en vedette suivant
   $nextRef = $dao->nextPlusCommande($lastRef);
   // Si c'est la fin: reste sur le même article
   if ($nextRef == -1) {
@@ -59,13 +59,13 @@ if (isset($_GET['categorie'])) {
   }
 }
 //Categories
-$vue->assign('categories', $dao->getAllCategories());
+$vue->assign('categories', $dao->getAllCat());
 
 // Passe le résultat à la vue
-$view->assign('nextRef',$nextRef);
+$vue->assign('nextRef',$nextRef);
 // Passe le résultat à la vue
-$view->assign('prevRef',$prevRef);
+$vue->assign('prevRef',$prevRef);
 
-$view->display("../view/main.view.php");
+$vue->display("../view/main.view.php");
 
 ?>

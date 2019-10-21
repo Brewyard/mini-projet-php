@@ -4,7 +4,7 @@
     class Article {
         private $ref;       // Référence unique
         private $intitule;   // Nom de l'article
-        private $infos
+        private $infos;
         private $idMere; // identifiant de catégorie
         private $prix;      // le prix
         private $urlPhoto;     // Nom du fichier image
