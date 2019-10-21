@@ -79,12 +79,13 @@ option {
 }
 
 
-#loupe {
+.loupe {
     margin: 5px;
     width: 30px;
     height: 30px;
     position: relative;
     top: 30px;
+    background-image: image("../view/design/loupe.png");
 }
 
 .pan {

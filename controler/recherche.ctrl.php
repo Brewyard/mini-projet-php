@@ -33,6 +33,6 @@ if (isset($_GET['recherche'])) { // normalement c'est tout le temps vrai
 }
 //Pas forcement d'articles trouvés
 
-$view->display("../view/recherche.view.php");
+$vue->display("../view/recherche.view.php");
 
 ?>

@@ -20,7 +20,7 @@
                 <select>
                     <option value="toutes" selected>Toutes les catégories</option>
                     <?php foreach ($categories as $cat): ?>
-                        <option value="<?=$cat?>"><?=$cat?></option>
+                        <option value="<?=$cat->libelle?>"><?=$cat->libelle?></option>
                     <?php endforeach; ?>
                     <!-- <option value="test1">Test1</option>
                     <option value="test2">Test2</option>
@@ -38,10 +38,11 @@
                 </select>
             </div>
             <div class="midBarre">
-                <form action="index.html" method="post">
-                    <input id="barreRecherche" type="text" placeholder="Que recherchez-vous ?">
+                <form action="../controler/recherche.ctrl.php" method="get">
+                    <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
+                    <input type="submit" name="" value="" id="loupe">
                 </form>
-                <a href="../controler/recherche.ctrl.php?categorie=<?=$categorie?>"> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a>
+                    <!-- <a href="../controler/recherche.ctrl.php?categorie=<?=$categorie->id?>"> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a> -->
             </div>
             <div class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
@@ -57,7 +58,7 @@
             <nav>
                 <ul>
                     <?php foreach ($categories as $cat): ?>
-                        <li> <br> <a href="../controler/main.ctrl.php?categorie=<?=$cat?>"><?=$cat?></a> </li>
+                        <li> <br> <a href="../controler/main.ctrl.php?categorie=<?=$cat->libelle?>"><?=$cat->libelle?></a> </li>
                     <?php endforeach; ?>
 
                     <!-- <li> <br> Test2</li>
@@ -84,7 +85,7 @@
             <!-- <a href="#"> <img id="banniere_noel" src="../view/design/banniere_noel.jpg" alt="bannière noël"> </a> -->
             <?php foreach ($articles as $article): ?>
                 <article class="">
-                    <a href="../controler/produit.ctrl.php?ref=<?=$article->getRef()?>"> <img src="../view/design/<?=$article?>.png" alt="<?=$article?>"> </a>
+                    <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="../view/design/<?=$article->intitule?>.png" alt="<?=$article->intitule?>"> </a>
                 </article>
             <?php endforeach; ?>
         </div>
