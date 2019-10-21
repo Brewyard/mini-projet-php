@@ -19,7 +19,10 @@
             <div class="cats">
                 <select>
                     <option value="toutes" selected>Toutes les catégories</option>
-                    <option value="test1">Test1</option>
+                    <?php foreach ($categories as $cat): ?>
+                        <option value="<?=$cat?>"><?=$cat?></option>
+                    <?php endforeach; ?>
+                    <!-- <option value="test1">Test1</option>
                     <option value="test2">Test2</option>
                     <option value="test3">Test3</option>
                     <option value="test4">Test4</option>
@@ -31,14 +34,14 @@
                     <option value="test10">Test10</option>
                     <option value="test11">Test11</option>
                     <option value="test12">Test12</option>
-                    <option value="test13">Test13</option>
+                    <option value="test13">Test13</option> -->
                 </select>
             </div>
             <div class="midBarre">
                 <form action="index.html" method="post">
                     <input id="barreRecherche" type="text" placeholder="Que recherchez-vous ?">
                 </form>
-                <a href="../controler/recherche.ctrl.php"> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a>
+                <a href="../controler/recherche.ctrl.php?categorie=<?=$categorie?>"> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a>
             </div>
             <div class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
@@ -53,8 +56,11 @@
         <div class="catLat">
             <nav>
                 <ul>
-                    <li> <br> Test1</li>
-                    <li> <br> Test2</li>
+                    <?php foreach ($categories as $cat): ?>
+                        <li> <br> <a href="../controler/main.ctrl.php?categorie=<?=$cat?>"><?=$cat?></a> </li>
+                    <?php endforeach; ?>
+
+                    <!-- <li> <br> Test2</li>
                     <li> <br> Test3</li>
                     <li> <br> Test4</li>
                     <li> <br> Test5</li>
@@ -65,12 +71,22 @@
                     <li> <br> Test10</li>
                     <li> <br> Test11</li>
                     <li> <br> Test12</li>
-                    <li> <br> Test13</li>
+                    <li> <br> Test13</li> -->
                 </ul>
             </nav>
         </div>
         <div class="zone">
-            <a href="#"> <img id="banniere_noel" src="../view/design/banniere_noel.jpg" alt="bannière noël"> </a>
+            <?php if ($categorie = 0): ?>
+                <h2>Articles en vedette</h2>
+            <?php else: ?>
+                <h2><?=$categorie?></h2>
+            <?php endif; ?>
+            <!-- <a href="#"> <img id="banniere_noel" src="../view/design/banniere_noel.jpg" alt="bannière noël"> </a> -->
+            <?php foreach ($articles as $article): ?>
+                <article class="">
+                    <a href="../controler/produit.ctrl.php?ref=<?=$article->getRef()?>"> <img src="../view/design/<?=$article?>.png" alt="<?=$article?>"> </a>
+                </article>
+            <?php endforeach; ?>
         </div>
     </body>
 </html>
