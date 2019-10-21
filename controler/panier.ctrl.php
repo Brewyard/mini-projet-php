@@ -18,4 +18,4 @@ if (isset($_SESSION['email'])) { // si on a son email dans la session il est con
 
 $vue->assign('panier', $articlesDansPanier);
 
- ?>
+?>

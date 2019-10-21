@@ -58,6 +58,9 @@ if (isset($_GET['categorie'])) {
     $prevRef = $firstRef;
   }
 }
+//Categories
+$vue->assign('categories', $dao->getAllCategories());
+
 // Passe le résultat à la vue
 $view->assign('nextRef',$nextRef);
 // Passe le résultat à la vue
