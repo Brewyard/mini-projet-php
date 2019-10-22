@@ -13,6 +13,9 @@ include_once("../framework/view.class.php");
 // Inclusion du modèle
 include_once("../model/DAO.class.php");
 
+$config = parse_ini_file('../config/config.ini');
+$imgArticlePath = $config['imgArticlePath'];
+
 session_start(); // Demarre la session pour enregistrer les articles du panier du client
 //Mais on peut enregistrer tout ce qu'on veut d'autres
 
@@ -24,7 +27,7 @@ if (isset($_GET['categorie'])) {
   $articles = $dao->getArticlesFromCat($_GET['categorie']); // on recupere les articles de cette categories dans la BDD
 }
 else {
-  $articles = $dao->getArticlesPlusCommandes(12); // On recupere articles les plus commandés
+  $articles = $dao->getArticlesPlusCommandes(3); // On recupere articles les plus commandés
 }
 $vue->assign('articles', $articles); // Donne articles à la vue
 
@@ -65,6 +68,8 @@ $vue->assign('categories', $dao->getAllCat());
 $vue->assign('nextRef',$nextRef);
 // Passe le résultat à la vue
 $vue->assign('prevRef',$prevRef);
+
+$vue->assign('images_path',$imgArticlePath);
 
 $vue->display("../view/main.view.php");
 

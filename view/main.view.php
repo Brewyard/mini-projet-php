@@ -42,7 +42,7 @@
                     <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
                     <input type="submit" name="" value="" id="loupe">
                 </form>
-                    <!-- <a href="../controler/recherche.ctrl.php?categorie=<?=$categorie->id?>"> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a> -->
+                    <!-- <a href="../controler/recherche.ctrl.php?categorie="> <img id="loupe" src="../view/design/loupe.png" alt="loupe"> </a> -->
             </div>
             <div class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
@@ -85,7 +85,7 @@
             <!-- <a href="#"> <img id="banniere_noel" src="../view/design/banniere_noel.jpg" alt="bannière noël"> </a> -->
             <?php foreach ($articles as $article): ?>
                 <article class="">
-                    <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="../view/design/<?=$article->intitule?>.png" alt="<?=$article->intitule?>"> </a>
+                    <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
                 </article>
             <?php endforeach; ?>
         </div>

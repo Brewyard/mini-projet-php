@@ -5,6 +5,9 @@ include_once("../framework/view.class.php");
 // Inclusion du modèle
 include_once("../model/DAO.class.php");
 
+$config = parse_ini_file('../config/config.ini');
+$imgArticlePath = $config['imgArticlePath'];
+
 $vue = new View();
 $dao = new DAO();
 
@@ -34,7 +37,7 @@ if (isset($_GET['panier'])) { // Doit etre renseigné à 0 par recherche.ctrl
         $_SESSION['panier'] = array();
         $_SESSION['panier'][] = $_GET['ref'];
       }
-      
+
   }
 
   }
@@ -43,5 +46,6 @@ if (isset($_GET['panier'])) { // Doit etre renseigné à 0 par recherche.ctrl
 }
 
 $vue->assign('ajouteAuPanier', $ajouteAuPanier);
+$vue->assign('images_path',$imgArticlePath);
 
  ?>

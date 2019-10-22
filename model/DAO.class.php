@@ -87,7 +87,16 @@
 
         //Retourne les $n articles les plus commandés toute catégorie confondue
         function getArticlesPlusCommandes(int $n){ //A modifier en fonction des commandes
-            $q = $this->db->query("SELECT * FROM Article LIMIT $n");
+            $q = $this->db->query("SELECT ref, intitule, infos, prix, urlPhoto, idMere
+                                   FROM (
+                                          SELECT ref, sum(quantite) as sommeQuantites
+                                          FROM Commande
+                                          GROUP BY ref
+                                          ORDER BY sommeQuantites DESC
+                                   ) b, Article a
+                                   WHERE b.ref = a.ref
+                                   LIMIT $n");
+            var_dump($q);
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
             return $res;
         }

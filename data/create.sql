@@ -47,6 +47,24 @@ CREATE TABLE Commande
     FOREIGN KEY (ref) REFERENCES Article(ref)
 );
 
+INSERT INTO Commande(email, ref, quantite) VALUES
+    ('michel@hotmail.fr', '69173685', 5),
+    ('pierrot@hotmail.fr', '69598326', 16),
+    ('jacquie@hotmail.fr', '69681136', 2),
+    ('ta4l@hotmail.fr', '68385275', 4),
+    ('ellest@hotmail.fr', '69608644', 3),
+    ('pourrie@hotmail.fr', '69681136', 1),
+    ('michou@hotmail.fr', '68137643', 20),
+    ('mivis@hotmail.fr', '69497190', 14),
+    ('rosie@hotmail.fr', '68618312', 11),
+    ('peter@hotmail.fr', '68385275', 2),
+    ('parker@hotmail.fr', '69706294', 3),
+    ('percy@hotmail.fr', '69173685', 3),
+    ('homersimpson@hotmail.fr', '69612781', 114);
+
+
+
+
 INSERT INTO Article(ref, intitule, infos, idMere, prix, urlPhoto) VALUES
     ('69173685','Abri de jardin en bois Malo', '4m², ép. 19mm',4,549.00,'69173685.jpg'),
     ('69394192','Abri en bois NATERIAL LUOTO', '8.6 m², ép. 28 mm',4,1099.00,'69394192.jpg'),

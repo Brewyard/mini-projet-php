@@ -8,6 +8,11 @@ include_once("../model/DAO.class.php");
 $vue = new View();
 $dao = new DAO();
 
+$config = parse_ini_file('../config/config.ini');
+$imgArticlePath = $config['imgArticlePath'];
+
+
+
 if (isset($_GET['recherche'])) { // normalement c'est tout le temps vrai
   $articlesTrouves = $dao->rechercheArticles($_GET['recherche']);
 
@@ -30,6 +35,7 @@ if (isset($_GET['recherche'])) { // normalement c'est tout le temps vrai
   $vue->assign('articlesTrouves', $articlesTrouves); // Donne articles à la vue
   $vue->assign('articleNext', $nextRef); // Donne articles à la vue
   $vue->assign('articlePrev', $prevRef); // Donne articles à la vue
+  $vue->assign('images_path',$imgArticlePath);
 }
 //Pas forcement d'articles trouvés
 
