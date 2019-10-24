@@ -96,7 +96,6 @@
                                    ) b, Article a
                                    WHERE b.ref = a.ref
                                    LIMIT $n");
-            var_dump($q);
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
             return $res;
         }
@@ -114,6 +113,33 @@
 
         }
 
+        function getPanierClient($email) {
+          $q = $this->db->query("SELECT ref, quantite
+                                 FROM Panier
+                                 WHERE email = $email
+                                 ORDER BY ref");
+          $res = $q->fetchAll();
+
+          if(count($res) > 0)
+            return $res;
+          else
+            return -1;
+        }
+
+        function inscrire() {
+          $sql = "INSERT INTO Client (email, nom, prenom, mdp, adresse, tel)
+                  values (:email, :nom, :prenom, :mdp, :adresse, :tel)";
+          $stmt = $this->db->prepare($sql);
+
+          $stmt->BindParam(':email', $email);
+          $stmt->BindParam(':nom', $nom);
+          $stmt->BindParam(':prenom', $prenom);
+          $stmt->BindParam(':mdp', $mdp);
+          $stmt->BindParam(':adresse', $adresse);
+          $stmt->BindParam(':tel', $tel);
+
+          $stmt->execute();
+        }
     }
 
     ?>
