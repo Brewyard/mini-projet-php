@@ -1,4 +1,3 @@
-
 <?php
 //Le controleur main a besoin :
 //  - Toutes les catégories et sous catégories
