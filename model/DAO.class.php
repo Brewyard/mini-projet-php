@@ -126,7 +126,7 @@
             return -1;
         }
 
-        function inscrire() {
+        function inscrire($email, $nom, $prenom, $mdp, $adresse, $tel) {
           $sql = "INSERT INTO Client (email, nom, prenom, mdp, adresse, tel)
                   values (:email, :nom, :prenom, :mdp, :adresse, :tel)";
           $stmt = $this->db->prepare($sql);
