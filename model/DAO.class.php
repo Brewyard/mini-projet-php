@@ -86,12 +86,12 @@
         }
 
         //Retourne les $n articles les plus commandés toute catégorie confondue
-        function getArticlesPlusCommandes(int $n){ //A modifier en fonction des commandes
-            $q = $this->db->query("SELECT ref, intitule, infos, prix, urlPhoto, idMere
+        function getArticlesPlusCommandes(int $n){
+            $q = $this->db->query("SELECT a.ref, intitule, infos, prix, urlPhoto, idMere
                                    FROM (
-                                          SELECT ref, sum(quantite) as sommeQuantites
-                                          FROM Commande
-                                          GROUP BY ref
+                                          SELECT c.ref, sum(quantite) as sommeQuantites
+                                          FROM Commande c
+                                          GROUP BY c.ref
                                           ORDER BY sommeQuantites DESC
                                    ) b, Article a
                                    WHERE b.ref = a.ref
