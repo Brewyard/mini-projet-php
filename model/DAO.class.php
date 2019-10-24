@@ -151,7 +151,10 @@
             $stmt->BindParam(':mdp', $mdp);
             $stmt->execute();
             $result = $stmt->fetchAll();
-            if ($result != null) $_SESSION['connecte'] = true;         
+            if ($result != null) {
+                $_SESSION['connecte'] = true;
+                $_SESSION['email'] = $email;
+            }
             $vue->display("../view/main.view.php");
         }
     }
