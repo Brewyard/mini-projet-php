@@ -14,6 +14,8 @@
         $dao = new DAO();
         $dao->inscrire($_POST['mail'], $_POST['nom'], $_POST['prenom'],
                         $_POST['pass'], $_POST['adresse'], $_POST['tel']);
+        $dao->connecter($_POST['mail'], $_POST['pass']);
+        $vue->display('../view/main.view.php');
     }
 
 ?>

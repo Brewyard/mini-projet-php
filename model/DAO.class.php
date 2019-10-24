@@ -140,6 +140,20 @@
 
           $stmt->execute();
         }
+
+        function connecter($email,$mdp) {
+            // Inclusion du framework
+            include_once("../framework/view.class.php");
+            $vue = new View();
+            $sql = "SELECT * FROM Client WHERE email = :email and mdp = :mdp";
+            $stmt = $this->db->prepare($sql);
+            $stmt->BindParam(':email', $email);
+            $stmt->BindParam(':mdp', $mdp);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            if ($result != null) $_SESSION['connecte'] = true;         
+            $vue->display("../view/main.view.php");
+        }
     }
 
     ?>

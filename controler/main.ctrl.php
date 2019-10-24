@@ -70,6 +70,8 @@ $vue->assign('prevRef',$prevRef);
 
 $vue->assign('images_path',$imgArticlePath);
 
+$vue->assign('connecte', false);
+
 $vue->display("../view/main.view.php");
 
 ?>
