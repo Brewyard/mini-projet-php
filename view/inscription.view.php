@@ -22,5 +22,10 @@
       <input id="confirm" type="password" name="confirm" maxlength="20" minlength="6" placeholder="Mot de passe" required><br>
       <input type="submit" name="" value="S'inscrire">
     </form>
+
+    <?php if (isset($message)): ?>
+        <p> <?=$message?> </p>
+    <?php endif; ?>
+
   </body>
 </html>
