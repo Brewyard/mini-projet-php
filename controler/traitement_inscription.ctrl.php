@@ -11,16 +11,22 @@
         $vue = new View();
         $vue->assign('message', 'Les mots de passe ne concordent pas !');
         $vue->display('../view/inscription.view.php');
-    } else { //rajouter cas existe deja
+    } else {
         $dao = new DAO();
-        $dao->inscrire($_POST['mail'], $_POST['nom'], $_POST['prenom'],
-                       $_POST['pass'], $_POST['adresse'], $_POST['tel']);
-        $dao->connecter($_POST['mail'], $_POST['pass']); // sert a rien
-        //Redirection sur le main et message inscription réussie
-        $_SESSION['mail'] = $_POST['mail']; //
-        $_SESSION['message'] = 'Inscription réussie ! Félicitations !'; //
-        header('Location: main.ctrl.php'); // connecté et retour page principale
-        exit();
+        $inscriptionReussie = $dao->inscrire($_POST['mail'], $_POST['nom'], $_POST['prenom'],
+                                             $_POST['pass'], $_POST['adresse'], $_POST['tel']);
+        if ($inscriptionReussie) {
+          session_start();
+          $_SESSION['mail'] = $_POST['mail']; //
+          $_SESSION['message'] = 'Inscription réussie ! Félicitations !'; //
+          header('Location: main.ctrl.php'); // connecté et retour page principale
+          exit();
+        }
+        else {
+          $vue = new View();
+          $vue->assign('message', 'Le compte existe déjà !');
+          $vue->display('../view/inscription.view.php');
+        }
     }
 
 ?>

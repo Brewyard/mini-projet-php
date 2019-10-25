@@ -15,9 +15,6 @@ include_once("../model/DAO.class.php");
 $config = parse_ini_file('../config/config.ini');
 $imgArticlePath = $config['imgArticlePath'];
 
-session_start(); // Demarre la session pour enregistrer les articles du panier du client
-//Mais on peut enregistrer tout ce qu'on veut d'autres
-
 $vue = new View();
 $dao = new DAO();
 $vue->assign('categorie', 0);
@@ -60,6 +57,13 @@ if (isset($_GET['categorie'])) {
     $prevRef = $firstRef;
   }
 }
+
+//message pour la creation du compte ou autres
+session_start(); // toujours faire session_start avant d'utiliser la session
+if (isset($_SESSION['message'])) {
+  $vue->assign('message', $_SESSION['message']);
+}
+
 //Categories
 $vue->assign('categories', $dao->getAllCat());
 
