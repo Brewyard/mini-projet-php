@@ -62,6 +62,7 @@ if (isset($_GET['categorie'])) {
 session_start(); // toujours faire session_start avant d'utiliser la session
 if (isset($_SESSION['message'])) {
   $vue->assign('message', $_SESSION['message']);
+  unset($_SESSION['message']);
 }
 
 //Categories

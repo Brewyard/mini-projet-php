@@ -138,13 +138,11 @@
           $stmt->BindParam(':adresse', $adresse);
           $stmt->BindParam(':tel', $tel);
 
-          $stmt->execute();
+          $success = $stmt->execute();
+          return $success;
         }
 
-        function connecter($email,$mdp) {
-            // Inclusion du framework
-            include_once("../framework/view.class.php");
-            $vue = new View();
+        function connecter($email,$mdp) { // retourne vrai si l'utilisateur existe
             $sql = "SELECT * FROM Client WHERE email = :email and mdp = :mdp";
             $stmt = $this->db->prepare($sql);
             $stmt->BindParam(':email', $email);
@@ -152,10 +150,9 @@
             $stmt->execute();
             $result = $stmt->fetchAll();
             if ($result != null) {
-                $_SESSION['connecte'] = true;
-                $_SESSION['email'] = $email;
+              return 1;
             }
-            $vue->display("../view/main.view.php");
+            return 0;
         }
     }
 

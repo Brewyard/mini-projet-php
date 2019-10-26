@@ -33,14 +33,19 @@
             <div class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
             </div>
-            <?php if ($_SESSION['connecte'] == false): ?>
+
                 <div class="rightBar">
+                <?php
+                    if (!(isset($_SESSION['mail']))) { ?>
                     <ul>
                         <li> <a class="signLog" href="../controler/connexion.ctrl.php">Se connecter</a> </li>
                         <li> <a class="signLog" href="../controler/inscription.ctrl.php">S'inscrire</a> </li>
                     </ul>
+                      <?php
+                    } else { ?>
+                        <a class="signLog" href="../controler/traitement_deconnexion.ctrl.php">Se déconnecter</a>
+                    <?php } ?>
                 </div>
-            <?php endif; ?>
         </header>
         <div class="catLat">
             <nav>
@@ -52,6 +57,9 @@
             </nav>
         </div>
         <div class="zone">
+            <?php if (isset($message)) : ?>
+                <p><?= $message ?></p>
+            <?php endif; ?>
             <?php if ($categorie = 0): ?>
                 <h2>Articles en vedette</h2>
             <?php else: ?>
