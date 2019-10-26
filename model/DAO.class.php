@@ -152,6 +152,15 @@
             $result = $stmt->fetch();
             return password_verify($mdp, $result["mdp"]); //compare les hash
         }
+
+        function getArticle($ref) {
+          $sql = "SELECT * FROM Article WHERE ref = :ref";
+          $stmt = $this->db->prepare($sql);
+          $stmt->BindParam(':ref', $ref);
+          $stmt->execute();
+          $result = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
+          return $result[0];
+        }
     }
 
     ?>

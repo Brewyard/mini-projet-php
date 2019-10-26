@@ -48,4 +48,6 @@ if (isset($_GET['panier'])) { // Doit etre renseigné à 0 par recherche.ctrl
 $vue->assign('ajouteAuPanier', $ajouteAuPanier);
 $vue->assign('images_path',$imgArticlePath);
 
+$vue->display('../view/produit.view.php');
+
  ?>
