@@ -134,7 +134,9 @@
           $stmt->BindParam(':email', $email);
           $stmt->BindParam(':nom', $nom);
           $stmt->BindParam(':prenom', $prenom);
-          $stmt->BindParam(':mdp', $mdp);
+          //crypte le mdp
+          $hashMDP = password_hash($mdp, PASSWORD_DEFAULT);
+          $stmt->BindParam(':mdp', $hashMDP);
           $stmt->BindParam(':adresse', $adresse);
           $stmt->BindParam(':tel', $tel);
 
@@ -143,16 +145,12 @@
         }
 
         function connecter($email,$mdp) { // retourne vrai si l'utilisateur existe
-            $sql = "SELECT * FROM Client WHERE email = :email and mdp = :mdp";
+            $sql = "SELECT * FROM Client WHERE email = :email";
             $stmt = $this->db->prepare($sql);
             $stmt->BindParam(':email', $email);
-            $stmt->BindParam(':mdp', $mdp);
             $stmt->execute();
-            $result = $stmt->fetchAll();
-            if ($result != null) {
-              return 1;
-            }
-            return 0;
+            $result = $stmt->fetch();
+            return password_verify($mdp, $result["mdp"]); //compare les hash
         }
     }
 
