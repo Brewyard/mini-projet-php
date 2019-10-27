@@ -79,14 +79,14 @@
         }
 
         //Retourne tous les articles de la catégorie sans se préoccuper des catégories filles
-        function getArticlesFromCat(int $id){
+        function getArticlesFromCat(int $id) : array {
             $q = $this->db->query("SELECT * FROM Article WHERE idMere=$id");
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
             return $res;
         }
 
         //Retourne les $n articles les plus commandés toute catégorie confondue
-        function getArticlesPlusCommandes(int $n){
+        function getArticlesPlusCommandes(int $n) : array{
             $q = $this->db->query("SELECT a.ref, intitule, infos, prix, urlPhoto, idMere
                                    FROM (
                                           SELECT c.ref, sum(quantite) as sommeQuantites
@@ -101,7 +101,7 @@
         }
 
         //Retourne la ref qui précède de 12 l'article $ref
-        function prevNPlusCommande($ref, $n){ //A modifier quand on aura les commandes
+        function prevNPlusCommande($ref, $n) : int { //A modifier quand on aura les commandes
             $q = $this->db->query("SELECT ref FROM Article WHERE ref < $ref ORDER BY ref DESC LIMIT $n");
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
             if(count($res) == $n) return $res[$n-1]->ref;
@@ -153,7 +153,7 @@
             return password_verify($mdp, $result["mdp"]); //compare les hash
         }
 
-        function getArticle($ref) {
+        function getArticle($ref) : Article {
           $sql = "SELECT * FROM Article WHERE ref = :ref";
           $stmt = $this->db->prepare($sql);
           $stmt->BindParam(':ref', $ref);
@@ -161,6 +161,19 @@
           $result = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
           return $result[0];
         }
+
+        function rechercheArticles($recherche) : array {
+            $sql = "SELECT * FROM Article WHERE intitule = %:recherche%";
+            $stmt = $this->db->prepare($sql);
+            $stmt->BindParam(':intitule', $recherche);
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
+            if(count($res) > 0)
+              return $res;
+            else
+              return -1;
+        }
+
     }
 
     ?>
