@@ -7,47 +7,46 @@
     </head>
     <body>
         <header>
-            <div class="logo">
+            <section class="logo">
                 <img id="logo" src="../view/design/logo.png" alt="logo">
-            </div>
-            <div class="special">
+            </section>
+            <section class="special">
                 <ul>
                     <li> <a href="#">Promos</a> </li>
                     <li> <a href="#">Codes de reduction</a> </li>
                 </ul>
-            </div>
-            <div class="cats">
+            </section>
+            <section class="cats">
                 <select>
                     <option value="toutes" selected>Toutes les catégories</option>
                     <?php foreach ($categories as $cat): ?>
                         <option value="<?=$cat->libelle?>"><?=$cat->libelle?></option>
                     <?php endforeach; ?>
                 </select>
-            </div>
-            <div class="midBarre">
+            </section>
+            <section class="midBarre">
                 <form action="../controler/recherche.ctrl.php" method="get">
                     <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
                     <input type="submit" name="" value="" id="loupe">
                 </form>
-            </div>
-            <div class="pan">
+            </section>
+            <section class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
-            </div>
-
-                <div class="rightBar">
-                <?php
-                    if (!(isset($_SESSION['mail']))) { ?>
-                    <ul>
-                        <li> <a class="signLog" href="../controler/connexion.ctrl.php">Se connecter</a> </li>
-                        <li> <a class="signLog" href="../controler/inscription.ctrl.php">S'inscrire</a> </li>
-                    </ul>
-                      <?php
-                    } else { ?>
-                        <a class="signLog" href="../controler/traitement_deconnexion.ctrl.php">Se déconnecter</a>
-                    <?php } ?>
-                </div>
+            </section>
+            <section class="rightBar">
+            <?php
+                if (!(isset($_SESSION['mail']))) { ?>
+                <ul>
+                    <li> <a class="signLog" href="../controler/connexion.ctrl.php">Se connecter</a> </li>
+                    <li> <a class="signLog" href="../controler/inscription.ctrl.php">S'inscrire</a> </li>
+                </ul>
+                  <?php
+                } else { ?>
+                    <a class="signLog" href="../controler/traitement_deconnexion.ctrl.php">Se déconnecter</a>
+                <?php } ?>
+            </section>
         </header>
-        <div class="catLat">
+        <aside class="catLat">
             <nav>
                 <ul>
                     <?php foreach ($categories as $cat): ?>
@@ -55,8 +54,8 @@
                     <?php endforeach; ?>
                 </ul>
             </nav>
-        </div>
-        <div class="zone">
+        </aside>
+        <section class="zone">
             <?php if (isset($message)) : ?>
                 <p><?= $message ?></p>
             <?php endif; ?>
@@ -70,6 +69,6 @@
                     <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
                 </article>
             <?php endforeach; ?>
-        </div>
+        </section>
     </body>
 </html>
