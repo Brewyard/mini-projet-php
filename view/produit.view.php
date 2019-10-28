@@ -15,8 +15,8 @@
           <label for="quantite">Quantité : </label>
           <input id="quantite" type="number" name="quantite" value="1">
           <label>Prix à l'unité: <?=$article->prix?> €</label>
-          <input type="text" name="ref" value="<?= $article->ref ?>">
-          <input type="submit" value="Commander">
+          <input type="hidden" name="ref" value="<?= $article->ref ?>">
+          <input type="submit" value="Ajouter au panier">
       </form>
     </section>
   </body>

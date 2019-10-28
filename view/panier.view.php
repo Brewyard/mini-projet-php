@@ -5,6 +5,7 @@
         <title>Panier</title>
     </head>
     <body>
+        <?php if ($panier) :?>
         <table>
             <tr>
                 <td>Produit</td>
@@ -20,7 +21,6 @@
 
                 <td><?= ($article->quantite) * ($article->prix) ?> </td>
             </tr>
-            <?php $total += ( ($article->quantite) * ($article->prix) ) ?>
           <?php endforeach; ?>
             <tr>
                 <td></td>
@@ -28,5 +28,8 @@
                 <td>Total : <?= $total ?> </td>
             </tr>
         </table>
+        <?php else :  ?>
+        <p>Votre panier est vide !</p>
+      <?php endif; ?>
     </body>
 </html>

@@ -113,25 +113,24 @@
 
         }
 
-        function getPanierClient($email) {
-          $q = $this->db->query("SELECT ref, quantite
-                                 FROM Panier
-                                 WHERE email = $email
-                                 ORDER BY ref");
-          $res = $q->fetchAll();
+        function getPanierClient($mail) {
+          $stmt = $this->db->prepare("SELECT ref, quantite FROM Panier WHERE email = ? ORDER BY ref");
+          $stmt->execute([$mail]);
+          $res = $stmt->fetchAll();
 
+          if ($res) {
           $articlesAvecQuantite = array();
 
-          foreach ($res as $article) {
-            $articleAvecQuantite = getArticle($article[0]);
-            $articleAvecQuantite->quantite = $article[1];
-            $articlesAvecQuantite[] = $articleAvecQuantite;
+            foreach ($res as $article) {
+              $articleAvecQuantite = $this->getArticle($article[0]);
+              $articleAvecQuantite->quantite = $article[1];
+              $articlesAvecQuantite[] = $articleAvecQuantite;
+            }
+            return $articlesAvecQuantite;
+          } else {
+            return 0;
           }
 
-          if(count($res) > 0)
-            return $articlesAvecQuantite;
-          else
-            return -1;
         }
 
         function inscrire($email, $nom, $prenom, $mdp, $adresse, $tel) {
@@ -170,10 +169,14 @@
           return $result[0];
         }
 
-        function rechercheArticles($recherche) : array {
-            $sql = "SELECT * FROM Article WHERE intitule = %:recherche%";
+        function rechercheArticles($recherche) {
+            $sql = "SELECT *
+                    FROM Article
+                    WHERE intitule
+                    LIKE :recherche ";
             $stmt = $this->db->prepare($sql);
-            $stmt->BindParam(':intitule', $recherche);
+            $recherche = '%'.$recherche.'%';
+            $stmt->BindParam(':recherche', $recherche);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
             if(count($res) > 0)
@@ -183,7 +186,13 @@
         }
 
         function ajoutPanier($mail, $ref, $quantite) {
-
+          $sql = "INSERT INTO Panier (email, ref, quantite)
+                  values (:email, :ref, :quantite)";
+          $stmt = $this->db->prepare($sql);
+          $stmt->BindParam(':email', $mail);
+          $stmt->BindParam(':ref', $ref);
+          $stmt->BindParam(':quantite', $quantite);
+          return $stmt->execute();
         }
 
     }
