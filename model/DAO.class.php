@@ -120,8 +120,16 @@
                                  ORDER BY ref");
           $res = $q->fetchAll();
 
+          $articlesAvecQuantite = array();
+
+          foreach ($res as $article) {
+            $articleAvecQuantite = getArticle($article[0]);
+            $articleAvecQuantite->quantite = $article[1];
+            $articlesAvecQuantite[] = $articleAvecQuantite;
+          }
+
           if(count($res) > 0)
-            return $res;
+            return $articlesAvecQuantite;
           else
             return -1;
         }
@@ -175,7 +183,7 @@
         }
 
         function ajoutPanier($mail, $ref, $quantite) {
-          
+
         }
 
     }

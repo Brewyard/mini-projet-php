@@ -11,16 +11,22 @@
                 <td>Quantité</td>
                 <td>Prix</td>
             </tr>
-            <?php foreach ($panier as $produit): ?>
+            <?php foreach ($panier as $article): ?>
             <tr>
                 <!-- reference -->
-                <td><?= $produit[0] ?></td>
+                <td><?= $article->intitule ?></td>
                 <!-- quantite -->
-                <td><?= $produit[1] ?></td>
+                <td><?= $article->quantite ?></td>
 
-                <td>Prix</td>
+                <td><?= ($article->quantite) * ($article->prix) ?> </td>
             </tr>
-            <?php endforeach; ?>
+            <?php $total += ( ($article->quantite) * ($article->prix) ) ?>
+          <?php endforeach; ?>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Total : <?= $total ?> </td>
+            </tr>
         </table>
     </body>
 </html>
