@@ -174,6 +174,10 @@
               return -1;
         }
 
+        function ajoutPanier($mail, $ref, $quantite) {
+          
+        }
+
     }
 
     ?>

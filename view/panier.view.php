@@ -11,6 +11,13 @@
                 <td>Quantité</td>
                 <td>Prix</td>
             </tr>
+            <?php foreach ($panier as $produit): ?>
+            <tr>
+                <td><?= $produit[0] ?></td>
+                <td><?= $produit[1] ?></td>
+                <td>Prix</td>
+            </tr>
+            <?php endforeach; ?>
         </table>
     </body>
 </html>

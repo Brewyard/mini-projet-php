@@ -11,7 +11,6 @@ $imgArticlePath = $config['imgArticlePath'];
 $vue = new View();
 $dao = new DAO();
 
-$articlesDansPanier = 0;
 // utiliser le panier de la session si utilisateur pas connecté ou alors son panier de la BDD
 if (isset($_SESSION['email'])) { // si on a son email dans la session il est connecté
   $articlesDansPanier = $dao->getPanierClient($_SESSION['email']); // panier BDD
@@ -21,6 +20,7 @@ if (isset($_SESSION['email'])) { // si on a son email dans la session il est con
 
 $vue->assign('panier', $articlesDansPanier);
 $vue->assign('images_path',$imgArticlePath);
-$vue->assign('images_path',$imgArticlePath);
+
+$vue->display('../view/panier.view.php');
 
 ?>
