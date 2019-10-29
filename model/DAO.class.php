@@ -30,6 +30,14 @@
             return $res;
         }
 
+        // Accès à toutes les catégories les plus basses (qui n'ont pas de catégorie fille)
+        // Retourne une table d'objets de type Categorie
+        function getCatFilles() : array {
+            $q = $this->db->query('SELECT id, intitule FROM Categorie WHERE id <> (SELECT idMere FROM Categorie)');
+            $res = $q->fetchAll(PDO::FETCH_CLASS, 'Categorie');
+            return $res;
+        }
+
 
 
         // Accès aux n premiers articles

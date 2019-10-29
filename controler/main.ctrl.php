@@ -66,7 +66,7 @@ if (isset($_SESSION['message'])) {
 }
 
 //Categories
-$vue->assign('categories', $dao->getAllCat());
+$vue->assign('categories', $dao->getCatFilles());
 
 // Passe le résultat à la vue
 $vue->assign('nextRef',$nextRef);

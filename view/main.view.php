@@ -48,7 +48,7 @@
                 <nav>
                     <ul>
                         <?php foreach ($categories as $cat): ?>
-                            <li> <a href="../controler/main.ctrl.php?categorie=<?=$cat->libelle?>"><?=$cat->libelle?></a> </li>
+                            <li> <a href="../controler/main.ctrl.php?categorie=<?=$cat->id?>"><?=$cat->libelle?></a> </li>
                         <?php endforeach; ?>
                     </ul>
                 </nav>
