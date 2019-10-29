@@ -63,7 +63,7 @@
         function next(int $ref) : int {
             $q = $this->db->query("SELECT ref FROM Article WHERE ref > $ref ORDER BY ref LIMIT 1");
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
-            if(count($res) == 1) return $res[0]->getRef();
+            if(count($res) == 1) return $res[0]->ref;
             else                 return -1;
         }
 
@@ -72,7 +72,7 @@
         function prevN(int $ref,int $n): int {
             $q = $this->db->query("SELECT ref FROM Article WHERE ref < $ref ORDER BY ref DESC LIMIT $n");
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
-            if(count($res) == $n) return $res[$n-1]->getRef();
+            if(count($res) == $n) return $res[$n-1]->ref;
             else                 return -1;
         }
 
@@ -91,9 +91,10 @@
 
         //Retourne tous les articles de la catégorie sans se préoccuper des catégories filles
         function getArticlesFromCat(int $id) : array {
-            $sql = "SELECT * FROM Article WHERE id = ?";
+            $sql = "SELECT * FROM Article WHERE idMere = :id";
             $stmt = $this->db->prepare($sql);
-            // $stmt->BindParam(':id', $id);
+            // var_dump();
+            $stmt->BindParam(':id', $id);
             $stmt->execute([$id]);
             // $q = $this->db->query("SELECT * FROM Article WHERE id = $id");
             $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');

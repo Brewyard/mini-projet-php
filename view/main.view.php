@@ -58,13 +58,12 @@
                 <?php if (isset($message)) : ?>
                     <p><?= $message ?></p>
                 <?php endif; ?>
-                <?php if ($categorie == 0): ?>
-                    <h2>Articles en vedette</h2>
-                <?php else: ?>
                     <h2><?=$categorie?></h2>
-                <?php endif; ?>
                 <hr>
                 <section class="presentation">
+                    <?php if (!$articles) :?>
+                      <p>Pas d'articles pour le moment</p>
+                    <?php endif; ?>
                     <?php foreach ($articles as $article): ?>
                         <article class="article">
                             <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>

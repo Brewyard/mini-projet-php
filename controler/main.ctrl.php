@@ -17,13 +17,16 @@ $imgArticlePath = $config['imgArticlePath'];
 
 $vue = new View();
 $dao = new DAO();
-$vue->assign('categorie', 0);
+
 if (isset($_GET['categorie'])) {
   $vue->assign('categorie', $_GET['categorie']); // On donne la categorie à la vue
   $articles = $dao->getArticlesFromCat($_GET['categorie']); // on recupere les articles de cette categories dans la BDD
+  $nomCateg = $dao->getCat($_GET['categorie'])->libelle;
+  $vue->assign('categorie', $nomCateg);
 }
 else {
-  $articles = $dao->getArticlesPlusCommandes(3); // On recupere articles les plus commandés
+  $vue->assign('categorie', 'Articles les plus commandés');
+  $articles = $dao->getArticlesPlusCommandes(5); // On recupere articles les plus commandés
 }
 $vue->assign('articles', $articles); // Donne articles à la vue
 
@@ -31,31 +34,39 @@ $vue->assign('articles', $articles); // Donne articles à la vue
 $firstRef = $articles[0]->ref;
 $lastRef = end($articles)->ref;
 
-if (isset($_GET['categorie'])) {
-  // Calcule la référence qui suit le dernier article
-  $nextRef = $dao->next($lastRef);
-  // Si c'est la fin: reste sur le même article
-  if ($nextRef == -1) {
-    $nextRef = $firstRef;
+if ($articles != NULL) {
+  if (isset($_GET['categorie'])) {
+    // Calcule la référence qui suit le dernier article
+    $nextRef = $dao->next($lastRef);
+    // Si c'est la fin: reste sur le même article
+    if ($nextRef == -1) {
+      $nextRef = $firstRef;
+    }
+    // Calcule la référence qui précède de 12 l'article courant
+    $prevRef = $dao->prevN($firstRef,12);
+    // Si c'est la fin: reste sur le même article
+    if ($prevRef == -1) {
+      $prevRef = $firstRef;
+    }
+  } else { //Sinon on doit recuperer la ref de l'article mis en vedette suivant
+    $nextRef = $dao->nextPlusCommande($lastRef);
+    // Si c'est la fin: reste sur le même article
+    if ($nextRef == -1) {
+      $nextRef = $firstRef;
+    }
+    // Calcule la référence qui précède de 12 l'article courant
+    $prevRef = $dao->prevNPlusCommande($firstRef,12);
+    // Si c'est la fin: reste sur le même article
+    if ($prevRef == -1) {
+      $prevRef = $firstRef;
   }
-  // Calcule la référence qui précède de 12 l'article courant
-  $prevRef = $dao->prevN($firstRef,12);
-  // Si c'est la fin: reste sur le même article
-  if ($prevRef == -1) {
-    $prevRef = $firstRef;
-  }
-} else { //Sinon on doit recuperer la ref de l'article mis en vedette suivant
-  $nextRef = $dao->nextPlusCommande($lastRef);
-  // Si c'est la fin: reste sur le même article
-  if ($nextRef == -1) {
-    $nextRef = $firstRef;
-  }
-  // Calcule la référence qui précède de 12 l'article courant
-  $prevRef = $dao->prevNPlusCommande($firstRef,12);
-  // Si c'est la fin: reste sur le même article
-  if ($prevRef == -1) {
-    $prevRef = $firstRef;
-  }
+}
+
+
+  // Passe le résultat à la vue
+  $vue->assign('nextRef',$nextRef);
+  // Passe le résultat à la vue
+  $vue->assign('prevRef',$prevRef);
 }
 
 //message pour la creation du compte ou autres
@@ -68,14 +79,7 @@ if (isset($_SESSION['message'])) {
 //Categories
 $vue->assign('categories', $dao->getCatFilles());
 
-// Passe le résultat à la vue
-$vue->assign('nextRef',$nextRef);
-// Passe le résultat à la vue
-$vue->assign('prevRef',$prevRef);
-
 $vue->assign('images_path',$imgArticlePath);
-
-$vue->assign('connecte', false);
 
 $vue->display("../view/main.view.php");
 
