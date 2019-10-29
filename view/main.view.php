@@ -43,31 +43,36 @@
                 <?php } ?>
             </section>
         </header>
-        <aside class="catLat">
-            <nav>
-                <ul>
-                    <?php foreach ($categories as $cat): ?>
-                        <li> <br> <a href="../controler/main.ctrl.php?categorie=<?=$cat->libelle?>"><?=$cat->libelle?></a> </li>
+        <section class="corps">
+            <aside class="catLat">
+                <nav>
+                    <ul>
+                        <?php foreach ($categories as $cat): ?>
+                            <li> <a href="../controler/main.ctrl.php?categorie=<?=$cat->libelle?>"><?=$cat->libelle?></a> </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
+            </aside>
+            <section class="zone">
+                <?php if (isset($message)) : ?>
+                    <p><?= $message ?></p>
+                <?php endif; ?>
+                <?php if ($categorie == 0): ?>
+                    <h2>Articles en vedette</h2>
+                <?php else: ?>
+                    <h2><?=$categorie?></h2>
+                <?php endif; ?>
+                <hr>
+                <section class="presentation">
+                    <?php foreach ($articles as $article): ?>
+                        <article class="article">
+                            <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
+                            <p><?=$article->intitule?></p>
+                            <p><?=$article->prix?> €</p>
+                        </article>
                     <?php endforeach; ?>
-                </ul>
-            </nav>
-        </aside>
-        <section class="zone">
-            <?php if (isset($message)) : ?>
-                <p><?= $message ?></p>
-            <?php endif; ?>
-            <?php if ($categorie = 0): ?>
-                <h2>Articles en vedette</h2>
-            <?php else: ?>
-                <h2><?=$categorie?></h2>
-            <?php endif; ?>
-            <?php foreach ($articles as $article): ?>
-                <article class="article">
-                    <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
-                    <p><?=$article->intitule?></p>
-                    <p><?=$article->prix?> €</p>
-                </article>
-            <?php endforeach; ?>
+                </section>
+            </section>
         </section>
     </body>
 </html>
