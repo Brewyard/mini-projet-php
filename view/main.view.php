@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Accueil</title>
+        <title>BricoJardin</title>
         <link rel="stylesheet" href="../view/style/main.style.css">
     </head>
     <body>
@@ -10,14 +10,9 @@
             <section class="logo">
                 <img id="logo" src="../view/design/logo.png" alt="logo">
             </section>
-            <section class="special">
-                <ul>
-                    <li> <a href="#">Promos</a> </li>
-                    <li> <a href="#">Codes de reduction</a> </li>
-                </ul>
-            </section>
+            <h1>BricoJardin</h1>
             <section class="cats">
-                <select>
+                <select name="categorie">
                     <option value="toutes" selected>Toutes les catégories</option>
                     <?php foreach ($categories as $cat): ?>
                         <option value="<?=$cat->libelle?>"><?=$cat->libelle?></option>
@@ -25,9 +20,9 @@
                 </select>
             </section>
             <section class="midBarre">
-                <form action="../controler/recherche.ctrl.php" method="get">
+                <form class="rech" action="../controler/recherche.ctrl.php" method="get">
                     <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
-                    <input type="submit" name="" value="" id="loupe">
+                    <input id="recherche" type="submit" name="" value="Rechercher">
                 </form>
             </section>
             <section class="pan">
@@ -42,7 +37,9 @@
                 </ul>
                   <?php
                 } else { ?>
-                    <a class="signLog" href="../controler/traitement_deconnexion.ctrl.php">Se déconnecter</a>
+                    <ul>
+                        <li> <a class="signLog" href="../controler/traitement_deconnexion.ctrl.php">Se déconnecter</a> </li>
+                    </ul>
                 <?php } ?>
             </section>
         </header>
@@ -65,8 +62,10 @@
                 <h2><?=$categorie?></h2>
             <?php endif; ?>
             <?php foreach ($articles as $article): ?>
-                <article class="">
+                <article class="article">
                     <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
+                    <p><?=$article->intitule?></p>
+                    <p><?=$article->prix?> €</p>
                 </article>
             <?php endforeach; ?>
         </section>
