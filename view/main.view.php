@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>BricoJardin</title>
+        <link rel="stylesheet" href="../view/style/general.style.css">
         <link rel="stylesheet" href="../view/style/main.style.css">
     </head>
     <body>

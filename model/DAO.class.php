@@ -86,17 +86,17 @@
             $stmt->BindParam(':id', $id);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Categorie');
-            return $res;
+            return $res[0];
         }
 
         //Retourne tous les articles de la catégorie sans se préoccuper des catégories filles
         function getArticlesFromCat(int $id) : array {
-            // $sql = "SELECT * FROM Article WHERE id = :id";
-            // $stmt = $this->db->prepare($sql);
+            $sql = "SELECT * FROM Article WHERE id = ?";
+            $stmt = $this->db->prepare($sql);
             // $stmt->BindParam(':id', $id);
-            // $stmt->execute();
-            $q = $this->db->query("SELECT * FROM Article WHERE id = $id");
-            $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
+            $stmt->execute([$id]);
+            // $q = $this->db->query("SELECT * FROM Article WHERE id = $id");
+            $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
             return $res;
         }
 

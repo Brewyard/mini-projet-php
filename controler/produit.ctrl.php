@@ -19,7 +19,11 @@ if (isset($_GET['ref'])) { // Forcement renseigné normalement car renseigné pa
   die("reference non renseignée dans l'URL");
 }
 
+$categorie = $dao->getCat($article->idMere);
+
+$vue->assign('categories', $dao->getCatFilles());
 $vue->assign('article', $article);
+$vue->assign('categorie', $categorie);
 $vue->assign('images_path',$imgArticlePath);
 
 $vue->display('../view/produit.view.php');

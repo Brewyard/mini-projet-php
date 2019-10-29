@@ -8,6 +8,9 @@ include_once("../model/DAO.class.php");
 $vue = new View();
 $dao = new DAO();
 
+//Categories
+$vue->assign('categories', $dao->getCatFilles());
+
 $vue->display('../view/inscription.view.php');
 
 ?>

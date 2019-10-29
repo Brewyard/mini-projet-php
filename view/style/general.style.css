@@ -1,0 +1,131 @@
+body {
+    font-family: Roboto, Montserrat, sans-serif;
+    margin: 0%;
+    color: black;
+    background-color: White;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    position: relative;
+    top: 0%;
+    display: flex;
+    background-color: AntiqueWhite;
+}
+
+.logo {
+    width: 5%;
+    margin-left: 0.3%;
+    margin-top: 0.3%;
+}
+
+#logo {
+    width: 90%;
+    height: 90%;
+}
+
+h1 {
+    margin: 0.8% 0% 0% 0%;
+}
+
+.cats {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    margin-top: 0.3%;
+}
+
+.cats select {
+    font-size: 0.9em;
+    height: 60%;
+    width: 70%;
+    position: relative;
+    top: 10%;
+}
+
+option {
+    box-sizing: border-box;
+}
+
+.midBarre {
+    display: flex;
+    justify-content: flex-start;
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 0.3%;
+}
+
+.rech {
+    width: 200%;
+}
+
+#barreRecherche {
+    font-size: 1.2em;
+    width: 80%;
+    height: 58%;
+    position: relative;
+    top: 10%;
+    padding: 0px;
+    padding-left: 10px;
+}
+
+
+#recherche {
+    font-size: 0.9em;
+    padding: 0.6% 1% 1.6% 1%;
+}
+
+.pan {
+    width: 2%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 3%;
+    margin-top: 0.5%;
+}
+
+#panier {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 1%;
+}
+
+.rightBar {
+    width: 17%;
+    margin-top: 0.3%;
+}
+
+.rightBar ul {
+    position: relative;
+    top: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0%;
+    margin : 0%;
+}
+
+.rightBar li {
+    list-style-type: none;
+    padding: 3%;
+}
+
+.rightBar li:last-child {
+    margin-left: 2%;
+    border-radius: 5px;
+    background-color: SandyBrown;
+}
+
+.rightBar li:last-child a {
+    color: White;
+}
+
+.signLog {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: black;
+}

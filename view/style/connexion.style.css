@@ -1,0 +1,57 @@
+a:nth-child(2) {
+    font-size: 1.8em;
+    font-weight: bold;
+    padding: 1% 0% 0% 0%;
+}
+
+.corps {
+    height: 100%;
+    width: 40%;
+    margin: auto;
+    margin-top: 2%;
+    display: flex;
+}
+
+.form {
+ background-color: AntiqueWhite;
+ height: 40%;
+ width: 40%;
+ margin-right: auto;
+ margin-left: auto;
+ margin-top: 0%;
+ border: solid AntiqueWhite 3px;
+ border-radius: 10px;
+ padding: 5%;
+}
+
+.form label {
+ font-size: 1.2em;
+ color: #333;
+ height: 3%;
+ width: 200px;
+ margin-top: 3%;
+ margin-left: 3%;
+ text-align: left;
+ clear: both;
+}
+
+.form input {
+ /* height: 5%; */
+ width: 300px;
+ border: 1px solid #000;
+ margin-top: 1%;
+ float: right;
+}
+
+.form input:last-child {
+    font-size: 1.3em;
+    padding: 1% 2%;
+    margin-top: 15%;
+    height: 5%;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    color: DarkRed;
+}
