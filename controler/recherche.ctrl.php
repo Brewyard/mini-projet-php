@@ -38,7 +38,7 @@ if (isset($_GET['recherche'])) { // normalement c'est tout le temps vrai
         $vue->assign('articlesTrouves', $articlesTrouves); // Donne articles à la vue
         $vue->assign('images_path',$imgArticlePath);
     } else {
-        $_SESSION['message'] = "Il n'y aucun article dont le nom ou la référence contient '$recherche'";
+        $_SESSION['message'] = "Il n'y aucun article dont le nom ou la référence contient '$recherche'.";
     }
     // $vue->assign('articleNext', $nextRef); // Donne articles à la vue
     // $vue->assign('articlePrev', $prevRef); // Donne articles à la vue
