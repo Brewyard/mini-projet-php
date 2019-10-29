@@ -33,7 +33,7 @@
         // Accès à toutes les catégories les plus basses (qui n'ont pas de catégorie fille)
         // Retourne une table d'objets de type Categorie
         function getCatFilles() : array {
-            $q = $this->db->query('SELECT id, intitule FROM Categorie WHERE id <> (SELECT idMere FROM Categorie)');
+            $q = $this->db->query('SELECT * FROM Categorie WHERE id <> (SELECT idMere FROM Categorie)');
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Categorie');
             return $res;
         }
@@ -81,14 +81,21 @@
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
         function getCat(int $id): Categorie {
-            $q = $this->db->query("SELECT * FROM Categorie WHERE id=$id");
-            $res = $q->fetchAll(PDO::FETCH_CLASS, 'Categorie');
+            $sql = "SELECT * FROM Categorie WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->BindParam(':id', $id);
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Categorie');
             return $res;
         }
 
         //Retourne tous les articles de la catégorie sans se préoccuper des catégories filles
         function getArticlesFromCat(int $id) : array {
-            $q = $this->db->query("SELECT * FROM Article WHERE idMere=$id");
+            // $sql = "SELECT * FROM Article WHERE id = :id";
+            // $stmt = $this->db->prepare($sql);
+            // $stmt->BindParam(':id', $id);
+            // $stmt->execute();
+            $q = $this->db->query("SELECT * FROM Article WHERE id = $id");
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Article');
             return $res;
         }
