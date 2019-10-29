@@ -170,6 +170,7 @@
         }
 
         function rechercheArticles($recherche) {
+            // Recherche sur l'intitulé
             $sql = "SELECT *
                     FROM Article
                     WHERE intitule
@@ -179,6 +180,15 @@
             $stmt->BindParam(':recherche', $recherche);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
+            // Recherche sur la ref
+            $sql2 = "SELECT *
+                     FROM Article
+                     WHERE ref
+                     LIKE :recherche ";
+            $stmt2 = $this->db->prepare($sql2);
+            $stmt2->BindParam(':recherche', $recherche);
+            $stmt2->execute();
+            $res += $stmt2->fetchAll(PDO::FETCH_CLASS, 'Article');
             if(count($res) > 0)
               return $res;
             else
