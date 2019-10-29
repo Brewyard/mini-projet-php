@@ -11,11 +11,14 @@ $imgArticlePath = $config['imgArticlePath'];
 $vue = new View();
 $dao = new DAO();
 session_start();
+$articlesDansPanier = [];
 // utiliser le panier de la session si utilisateur pas connecté ou alors son panier de la BDD
 if (isset($_SESSION['mail'])) { // si on a son email dans la session il est connecté
   $articlesDansPanier = $dao->getPanierClient($_SESSION['mail']); // panier BDD
 } else {
-  $articlesDansPanier = $_SESSION['panier']; // panier session
+    if (isset($_SESSION['panier'])) {
+        $articlesDansPanier = $_SESSION['panier']; // panier session
+    }
 }
 
 if ($articlesDansPanier) { // si panier pas vide
@@ -26,6 +29,7 @@ if ($articlesDansPanier) { // si panier pas vide
   $vue->assign('total', $total);
 }
 
+$vue->assign('categories', $dao->getCatFilles());
 
 $vue->assign('panier', $articlesDansPanier);
 
