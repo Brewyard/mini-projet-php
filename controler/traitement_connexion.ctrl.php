@@ -8,7 +8,7 @@
     if ($connexionReussie) {
       session_start(); //demarre la session pour enregistrer le mail de la personne dedans
       $_SESSION['mail'] = $_POST['mail']; //
-      $_SESSION['message'] = 'Connexion réussie ! Félicitations !'; //
+      $_SESSION['message'] = 'Connexion réussie ! Félicitations !';
       //il faut enregistrer le panier de la session dans la BDD
       if (isset($_SESSION['panier'])) {
         foreach ($_SESSION['panier'] as $article) {

@@ -3,3 +3,8 @@ a:nth-child(2) {
     font-weight: bold;
     padding: 1% 0% 0% 0%;
 }
+
+#message {
+    font-size: 1.4em;
+    font-weight: bold;
+}

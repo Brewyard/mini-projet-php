@@ -57,15 +57,19 @@
             <section class="zone">
                 <h2>Produits trouvés pour la recherche "<?=$recherche?>"</h2>
                 <hr>
-                <section class="presentation">
-                    <?php foreach ($articlesTrouves as $article): ?>
-                        <article class="article">
-                            <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
-                            <p><?=$article->intitule?></p>
-                            <p><?=$article->prix?> €</p>
-                        </article>
-                    <?php endforeach; ?>
-                </section>
+                <?php if (isset($articlesTrouves) && $articlesTrouves != -1): ?>
+                    <section class="presentation">
+                        <?php foreach ($articlesTrouves as $article): ?>
+                            <article class="article">
+                                <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
+                                <p><?=$article->intitule?></p>
+                                <p><?=$article->prix?> €</p>
+                            </article>
+                        <?php endforeach; ?>
+                    </section>
+                <?php else: ?>
+                    <p id="message"><?=$_SESSION['message']?></p>
+                <?php endif; ?>
             </section>
 
         </section>
