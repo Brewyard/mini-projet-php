@@ -25,7 +25,7 @@
         // Accès à toutes les catégories
         // Retourne une table d'objets de type Categorie
         function getAllCat() : array {
-            $q = $this->db->query('SELECT * FROM Categorie');
+            $q = $this->db->query('SELECT * FROM Categorie WHERE idMere IS NULL');
             $res = $q->fetchAll(PDO::FETCH_CLASS, 'Categorie');
             return $res;
         }
