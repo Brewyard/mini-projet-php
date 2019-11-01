@@ -1,10 +1,9 @@
 <?php
-
+// Inclusion du modèle
+include_once("../model/DAO.class.php");
 session_start();
 if (isset($_SESSION['mail'])) { // il est connecté
     // Evidemment il manque la phase de paiement à rajouter
-    // Inclusion du modèle
-    include_once("../model/DAO.class.php");
     $dao = new DAO();
     $articlesPanier = $dao->getPanierClient($_SESSION['mail']); // recup le panier du client
     foreach ($articlesPanier as $article) { // commande chaque article du panier du client

@@ -222,11 +222,21 @@
         }
 
         function commande($mail, $article) { // Attention il faut avoir ajouté un attribut quantité à l'article pour utiliser cette fonction
-
+            $sql = "INSERT INTO Commande (email, ref, quantite)
+                    values (:email, :ref, :quantite)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->BindParam(':email', $mail);
+            $stmt->BindParam(':ref', $article->ref);
+            $stmt->BindParam(':quantite', $article->quantite);
+            return $stmt->execute();
         }
 
-        function supprimerPanier($mail, $ref) {
-          
+        function supprimerPanier($mail, $reference) {
+          $sql = 'DELETE FROM Panier WHERE email = ? AND ref = ?';
+          $stmt = $this->db->prepare($sql);
+          $stmt->BindParam(1, $mail, PDO::PARAM_STR);
+          $stmt->BindParam(2, $reference, PDO::PARAM_STR);
+          return $stmt->execute();
         }
 
     }
