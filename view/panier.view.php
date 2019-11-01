@@ -62,18 +62,27 @@
                   <td><?= $article->quantite ?></td>
 
                   <td><?= ($article->quantite) * ($article->prix) ?> €</td>
+                  <td>
+                  <form action="../controler/traitement_deletePanier.ctrl.php" method="post">
+                    <input name="ref" value="<?= $article->ref ?>" type="hidden">
+                    <input type="submit" value="Supprimer du panier">
+                  </form>
+                  </td>
               </tr>
             <?php endforeach; ?>
               <tr>
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>Total : <?= $total ?> €</td>
               </tr>
           </table>
+          <a href="../controler/traitement_commande.ctrl.php">Commander mon panier</a>
           <?php else :  ?>
           <p>Votre panier est vide !</p>
         <?php endif; ?>
+
       </section>
     </body>
 </html>

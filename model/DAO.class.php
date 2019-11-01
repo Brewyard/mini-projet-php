@@ -221,6 +221,14 @@
           return $stmt->execute();
         }
 
+        function commande($mail, $article) { // Attention il faut avoir ajouté un attribut quantité à l'article pour utiliser cette fonction
+
+        }
+
+        function supprimerPanier($mail, $ref) {
+          
+        }
+
     }
 
     ?>
