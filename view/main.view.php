@@ -11,21 +11,17 @@
             <section class="logo">
                 <img id="logo" src="../view/design/logo.png" alt="logo">
             </section>
-            <h1>BricoJardin</h1>
-            <section class="cats">
+            <a href="../controler/main.ctrl.php"><h1>BricoJardin</h1></a>
+            <form class="rech" action="../controler/recherche.ctrl.php" method="get">
                 <select name="categorie">
                     <option value="toutes" selected>Toutes les catégories</option>
                     <?php foreach ($categories as $cat): ?>
                         <option value="<?=$cat->libelle?>"><?=$cat->libelle?></option>
                     <?php endforeach; ?>
                 </select>
-            </section>
-            <section class="midBarre">
-                <form class="rech" action="../controler/recherche.ctrl.php" method="get">
-                    <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
-                    <input id="recherche" type="submit" name="" value="Rechercher">
-                </form>
-            </section>
+                <input id="barreRecherche" name="recherche" type="text" placeholder="Que recherchez-vous ?">
+                <input id="recherche" type="submit" name="" value="Rechercher">
+            </form>
             <section class="pan">
                 <a href="../controler/panier.ctrl.php"> <img id="panier" src="../view/design/panier.png" alt="panier"> </a>
             </section>
@@ -33,8 +29,8 @@
             <?php
                 if (!(isset($_SESSION['mail']))) { ?>
                 <ul>
-                    <li> <a class="signLog" href="../controler/connexion.ctrl.php">Se connecter</a> </li>
-                    <li> <a class="signLog" href="../controler/inscription.ctrl.php">S'inscrire</a> </li>
+                    <li> <a class="signLog" href="../controler/connexion.ctrl.php">Connexion</a> </li>
+                    <li> <a class="signLog" href="../controler/inscription.ctrl.php">Inscription</a> </li>
                 </ul>
                   <?php
                 } else { ?>
