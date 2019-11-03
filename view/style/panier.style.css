@@ -16,7 +16,19 @@ td {
     text-align: center;
 }
 
+td a {
+    text-decoration : underline;
+}
+
 .prod {
     text-align: left;
     width: 40%;
+}
+
+.commander {
+    background-color : #FEA222;
+    color : #EBEBEB;
+    padding : 4px;
+    border-radius : 5px;
+    box-shadow : 1px 2px #A35500;
 }

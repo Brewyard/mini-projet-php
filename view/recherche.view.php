@@ -59,8 +59,10 @@
                         <?php foreach ($articlesTrouves as $article): ?>
                             <article class="article">
                                 <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"> <img src="<?=$images_path.''.$article->ref?>.jpg" alt="<?=$article->intitule?>"> </a>
-                                <p><?=$article->intitule?></p>
-                                <p><?=$article->prix?> €</p>
+                                <div class="description">
+                                    <a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"><p><?=$article->intitule?></p></a>
+                                    <p><?=$article->prix?> €</p>
+                                </div>
                             </article>
                         <?php endforeach; ?>
                     </section>

@@ -51,7 +51,7 @@
               </tr>
               <?php foreach ($panier as $article): ?>
               <tr>
-                  <td class="prod"><?= $article->intitule ?></td>
+                  <td class="prod"><a href="../controler/produit.ctrl.php?ref=<?=$article->ref?>"><?= $article->intitule ?></a></td>
 
                   <td><?= $article->ref ?></td>
 
@@ -74,7 +74,7 @@
                   <td>Total : <?= $total ?> €</td>
               </tr>
           </table>
-          <a href="../controler/traitement_commande.ctrl.php">Commander mon panier</a>
+          <a class="commander" href="../controler/traitement_commande.ctrl.php">Commander mon panier</a>
           <?php else :  ?>
           <p>Votre panier est vide !</p>
         <?php endif; ?>

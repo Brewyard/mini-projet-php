@@ -44,10 +44,10 @@
           <section class="form">
               <form class="" action="traitement_connexion.ctrl.php" method="post">
                 <label for="mail">Login (adresse mail) :</label> <br>
-                <input type="email" name="mail" value="" placeholder="example@example.com">
+                <input type="email" id="mail" name="mail" value="" placeholder="example@example.com">
                 <br> <br> <br>
                 <label for="pass">Mot de passe :</label> <br>
-                <input type="password" name="pass" value="" placeholder="password" maxlength="20" minlength="6">
+                <input type="password" id="pass" name="pass" value="" placeholder="password" maxlength="20" minlength="6">
                 <input type="submit" name="" value="Se connecter">
               </form>
           </section>

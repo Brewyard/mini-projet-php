@@ -23,6 +23,10 @@
     font-size: 1.6em;
 }
 
+.produit h1 {
+    color : #666666;
+}
+
 input:last-child {
     font-size: 0.8em;
     padding: 1% 2%;

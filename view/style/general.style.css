@@ -21,7 +21,8 @@ header {
 
 .logo {
     width: 5%;
-    padding: 1% 0 1% 0;
+    height : 5%;
+    padding: 1.5em 0 1.5em 0;
 }
 
 #logo {
@@ -59,7 +60,8 @@ option {
 
 .pan {
     width: 5%;
-    padding: 1% 0 1% 0;
+    height : 5%;
+    padding: 0.7em 0 0.7em 0;
 }
 
 #panier {

@@ -7,34 +7,35 @@
 }
 
 .form {
- background-color: AntiqueWhite;
- height: 40%;
- width: 40%;
- margin-right: auto;
- margin-left: auto;
- margin-top: 0%;
- border: solid AntiqueWhite 3px;
- border-radius: 10px;
- padding: 5%;
+    background-color: AntiqueWhite;
+    height: 40%;
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0%;
+    border: solid AntiqueWhite 3px;
+    border-radius: 10px;
+    padding: 5%;
 }
 
 .form label {
- font-size: 1.2em;
- color: #333;
- height: 3%;
- width: 200px;
- margin-top: 3%;
- margin-left: 3%;
- text-align: left;
- clear: both;
+    font-size: 1.2em;
+    color: #333;
+    height: 3%;
+    width: 200px;
+    margin-top: 3%;
+    margin-left: 3%;
+    text-align: left;
+    clear: both;
 }
 
 .form input {
- /* height: 5%; */
- width: 300px;
- border: 1px solid #000;
- margin-top: 1%;
- float: right;
+    /* height: 5%; */
+    width: 100%;
+    border: 1px solid #000;
+    margin-top: 1%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .form input:last-child {
