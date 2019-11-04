@@ -12,11 +12,20 @@ include_once("../framework/view.class.php");
 // Inclusion du modèle
 include_once("../model/DAO.class.php");
 
+define("NB_ARTICLES", "5");
+
 $config = parse_ini_file('../config/config.ini');
 $imgArticlePath = $config['imgArticlePath'];
 
 $vue = new View();
 $dao = new DAO();
+
+if(isset($_GET['firstId']) && $_GET['firstId'] + 5 <= $nbMusic){
+  $firstId = $_GET['firstId'];
+}
+else{
+  $firstId = 1;
+}
 
 if (isset($_GET['categorie'])) {
   $vue->assign('categorie', $_GET['categorie']); // On donne la categorie à la vue
@@ -26,7 +35,7 @@ if (isset($_GET['categorie'])) {
 }
 else {
   $vue->assign('categorie', 'Articles les plus commandés');
-  $articles = $dao->getArticlesPlusCommandes(5); // On recupere articles les plus commandés
+  $articles = $dao->getArticlesPlusCommandes($firstId,NB_ARTICLES); // On recupere articles les plus commandés
 }
 $vue->assign('articles', $articles); // Donne articles à la vue
 
