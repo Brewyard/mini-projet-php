@@ -41,6 +41,12 @@
     /* background-color: PowderBlue; */
 }
 
+.message {
+  background-color: #28b51e;
+  color: #EBEBEB;
+  border-radius: 5px;
+}
+
 .zone h2 {
     font-size: 1.7em;
     margin-left: 1%;

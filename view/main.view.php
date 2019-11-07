@@ -52,7 +52,7 @@
             </aside>
             <section class="zone">
                 <?php if (isset($message)) : ?>
-                    <p><?= $message ?></p>
+                    <p id="message"><?= $message ?></p>
                 <?php endif; ?>
                     <h2><?=$categorie?></h2>
                 <hr>
