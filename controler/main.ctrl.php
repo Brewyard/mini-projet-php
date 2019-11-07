@@ -31,8 +31,10 @@ else {
 $vue->assign('articles', $articles); // Donne articles à la vue
 
 // Note la référence du premier et dernier article affiché
-$firstRef = $articles[0]->ref;
-$lastRef = end($articles)->ref;
+if(count($articles) != 0) {
+  $firstRef = $articles[0]->ref;
+  $lastRef = end($articles)->ref;
+}
 
 if ($articles != NULL) {
   if (isset($_GET['categorie'])) {
